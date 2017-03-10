@@ -1,0 +1,82 @@
+.head{
+	margin-top: 48px;
+	background: #f0f0f0;
+	overflow: hidden;
+	padding: 10px;
+	img{
+		width: 50px;
+		height: 50px;
+		border-radius: 50px;
+	}
+}
+.imgbox{
+	float: left;
+	text-align: center;
+	margin-right: 10px;
+}
+.info{
+	height: 25px;
+	line-height: 48px;
+}
+.title{
+	text-align: center;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 32px;
+}
+.main{
+	padding: 20px;
+	p{
+		text-indent: 2em;
+	}
+	img{
+		display: block;
+		margin: 20px auto;
+		width: 600px;
+	}
+}
+@media (max-width: 750px){
+	.main{
+		img{
+			width: 80%;
+		}
+	}
+
+}
+.reply{
+	li{
+		padding: 10px 20px;
+		overflow: hidden;
+		border-bottom: 1px solid #ccc;
+	}
+	h2{
+		padding: 10px 20px;
+		font-size: 18px;
+		background: #ccc;
+	}
+	img{
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+	}
+
+	b{
+		display: block;
+		text-align: right;
+	}
+}
+.author{
+	float: left;
+	text-align: center;
+	padding-top: 10px;
+}
+.item{
+	padding: 5px;
+	overflow: hidden;
+}
+.form{
+	padding: 20px;
+}
+.textarea{
+	transition: all 0.3s ease-out;
+}
