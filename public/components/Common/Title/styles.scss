@@ -6,16 +6,20 @@
 	animation: animations 0.5s;
 	transform-origin: 0% 0%;
 	padding: 0;
-	text-align: center;
 	height: 48px;
 	overflow: hidden;
 	font-size: 14px !important;
 	h1{
-		padding: 0;
+		text-align: center;
 		margin: 0;
 		font-size: 18px !important;
 		height: 48px !important;
 		line-height: 48px !important;
+		padding-right: 48px;
+	}
+	div {
+		margin: 0 !important;
+		padding: 0 !important;
 
 	}
 }

@@ -10,6 +10,8 @@ import {connect} from 'react-redux'
 import Header from "../Common/Header/Header"
 import Lists from "../Common/Lists/Lists"
 import getSize from "../../utils/getSize"
+import iScroll from "iscroll/build/iscroll-probe"; // 只有这个库支持onScroll,从而支持bounce阶段的事件捕捉
+
 class HomePage extends React.Component {
     constructor(props) {
         super(props);
@@ -191,7 +193,6 @@ class HomePage extends React.Component {
     }
     componentWillUnmount(){
         let {scrollT} = getSize();
-
         // console.log(scrollT);
         const {selectedTab,dispatch} = this.props;
         dispatch(recordScrollT(selectedTab,scrollT));

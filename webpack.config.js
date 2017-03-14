@@ -2,10 +2,26 @@ var path = require('path');
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var redBox = require('redbox-react');
-var plugins = [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-];
+var ExtractTextPlugin = require('extract-text-webpack-plugin'); //css单独打包
+var HtmlWebpackPlugin = require('html-webpack-plugin'); //生成html
+
+var plugins = [];
+
+if (process.argv.indexOf('-p') > -1) { //生产环境
+    plugins.push(new webpack.DefinePlugin({ //编译成生产版本
+        'process.env': {
+            NODE_ENV: JSON.stringify('"production"')
+        }
+    }));
+    publicPath = '/my-cnode/public/assets/dist';
+    path = __dirname + '/my-cnode/public/assets/dist';
+}
+plugins.push(new ExtractTextPlugin('[name].css')); //css单独打包
+plugins.push(new HtmlWebpackPlugin({ //根据模板插入css/js等生成最终HTML
+    filename: './public/index.html', //生成的html存放路径，相对于 path
+    template: './public/assets/template/index.html', //html模板路径
+    hash: true,    //为静态资源生成hash值
+}));
 
 // 开启服务器后不能用相对路径
 module.exports = {
@@ -61,7 +77,7 @@ module.exports = {
                 // loader处理文件的加载顺序是从右到左，即先通过sass-loader将scss转成css,然后再用postcss预处理，添加上css3动画兼容性前缀等
                 // 然后在通过css-loader将css引入js文件,如果css-loader加了一个查询参数modules，则会将css中类名MD5化，使其变成唯一
                 // 最后通过styleloader将计算好的样式文件以style标签的形式加入到dom头部
-                loader: 'style!css?modules!postcss!sass'
+                loader: 'style!css?modules&localIdentName=[name]__[local]!sass?sourceMap=true'
             },
             {
                 test: /\.css$/,

@@ -12,6 +12,7 @@ import App from './containers/App';
 import prefix from './utils/routePrefix';
 import { Provider } from 'react-redux';
 import store from './store';
+import './assets/css/index.css';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';//touch事件
 injectTapEventPlugin();
